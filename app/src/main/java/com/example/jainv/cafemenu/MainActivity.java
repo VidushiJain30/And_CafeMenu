@@ -23,8 +23,9 @@ public class MainActivity extends AppCompatActivity {
      */
     int c=0;
     public void submitOrder(View view) {
-       String msg="Total Item: "+ c +" coffees \n Price: Rs " + (c*5);
-       displayMsg(msg);
+        int price=calculate_price(c);
+        String msg=" Name: Vidushi Jain \n Quantity: "+ c +" coffees \n Total Price: Rs " + price + " \n Thank You!";
+       orderSummary(msg);
         display(c);
            }
     public void increase(View view) {
@@ -44,8 +45,14 @@ public class MainActivity extends AppCompatActivity {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
-    private void displayMsg(String msg) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(msg);
+    private int calculate_price(int qty)
+    {
+        int total=qty*5;
+        return total;
+    }
+    private void orderSummary(String msg)
+    {
+        TextView orderTextView = (TextView) findViewById(R.id.order_text_view);
+        orderTextView.setText(msg);
     }
 }
